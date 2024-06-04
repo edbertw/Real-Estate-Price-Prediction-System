@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 
 
-X = pd.read_csv('/kaggle/input/housing-prices/train.csv', index_col='Id')
+X = pd.read_csv('houses.csv', index_col='Id')
 print(X.isnull().sum())
 X.dropna(axis=0, subset=['SalePrice'], inplace=True)
 y = X.SalePrice              
