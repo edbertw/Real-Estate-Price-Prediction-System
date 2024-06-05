@@ -7,7 +7,8 @@ The dataset used in this project is ```houses.csv```,which contains 1460 observa
 ## Data Preprocessing
 Several preprocessing steps were implemented on the dataset to allow for accurate predictions
 1. Removing categorical columns with high cardinality, as implementation alongside OneHotEncoding will result in too much columns
-2. In the pipeline, implement ```SimpleImputer``` and ```OneHotEncoding```
+2. In the data preprocessing pipeline, implement ```SimpleImputer``` and ```OneHotEncoding```
+   
 ## Model Training and Hyperparameter Tuning
 This project utilises GridSearchCV to perform hyperparameter tuning on 3 distinct parameters of RandomForestRegressor, mainly number of estimates, maximum depth of trees and the minimum number of samples required to split a node.
 ## Results
