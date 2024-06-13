@@ -4,6 +4,8 @@ This project aims to predict sale prices of real estate using a dataset of known
 In this project, I have implemented data preprocessing using pipeline which fills in missing data on both categorical and numerical columns using SimpleImputer and encodes categorical data using the OneHotEncoder function from ```scikit-learn```. I also implemented GridSearchCV for hyperparameter tuning to achieve the best estimator of models with varying parameters
 ## Dataset
 The dataset used in this project is ```houses.csv```,which contains 1460 observations and 81 total features that determine house sale prices. During data preprocessing, some of these features will be removed for simplicity.
+## Feature Manipulation
+Implemented KMeans Clustering, an unsupervised ML algorithm to perform clustering and add a Cluster column
 ## Data Preprocessing
 Several preprocessing steps were implemented on the dataset to allow for accurate predictions
 1. Removing categorical columns with high cardinality, as implementation alongside OneHotEncoding will result in too much columns
