@@ -5,7 +5,7 @@ In this project, I have implemented data preprocessing using pipeline which fill
 ## Dataset
 The dataset used in this project is ```houses.csv```,which contains 1460 observations and 81 total features that determine house sale prices. During data preprocessing, some of these features will be removed for simplicity.
 ## Feature Manipulation
-Implemented KMeans Clustering, an unsupervised ML algorithm to perform clustering and add a Cluster column
+Implemented KMeans Clustering, an unsupervised ML algorithm, of a few existing numerical and continuous features  and added a Cluster column to the houses dataset
 ## Data Preprocessing
 Several preprocessing steps were implemented on the dataset to allow for accurate predictions
 1. Removing categorical columns with high cardinality, as implementation alongside OneHotEncoding will result in too much columns
