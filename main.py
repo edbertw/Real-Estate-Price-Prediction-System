@@ -16,6 +16,12 @@ X.dropna(axis=0, subset=['SalePrice'], inplace=True)
 y = X.SalePrice              
 X.drop(['SalePrice'], axis=1, inplace=True)
 
+features = ["LotArea","TotalBsmtSF","1stFlrSF","2ndFlrSF","GrLivArea"]
+X_scaled = X.loc[:, features]
+X_scaled = (X_scaled - X_scaled.mean(axis=0)) / X_scaled.std(axis=0)
+kmeans = KMeans(n_clusters = 10,n_init = 10, random_state=0)
+X["Cluster"] = kmeans.fit_predict(X_scaled)
+
 X_trainN, X_testN, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2,
                                                                 random_state=0)
 
