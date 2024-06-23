@@ -65,10 +65,12 @@ preprocessor = ColumnTransformer(
         ('num', numerical_transformer, numeric_cols),
         ('cat', categorical_transformer, low_cardinality_cols)
     ])
+
 model = RandomForestRegressor(random_state = 0)
 Pipe = Pipeline(steps=[('preprocessor', preprocessor),
                       ('model', model)])
-# Implementation of GridSearchCV for hyperparameter tuning
+
+#Implementation of GridSearchCV for hyperparameter tuning
 param_grid = {
     'model__n_estimators':[100,200,300],
     'model__max_depth':[5,10,15],
@@ -82,7 +84,7 @@ best_score = grid_search.best_score_
 print(best_parameters)
 print(best_score)
 
-# Evaluation of model
+#Evaluation of model
 best_model = grid_search.best_estimator_
 y_pred = best_model.predict(X_test)
 print("MAE: ",mean_absolute_error(y_pred, y_test))
