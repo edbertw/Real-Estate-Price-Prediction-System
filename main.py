@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import GridSearchCV
@@ -13,7 +13,7 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import mean_absolute_error, r2_score
 
 #Make Target and Predictors
-X = pd.read_csv('/kaggle/input/houses-csv/houses.csv', index_col='Id')
+X = pd.read_csv('houses.csv', index_col='Id')
 print(X.isnull().sum())
 X.dropna(axis=0, subset=['SalePrice'], inplace=True)
 y = X.SalePrice              
@@ -54,7 +54,11 @@ X_train = X_trainN[cols].copy()
 X_test = X_testN[cols].copy()
 
 # Construct the model pipeline
-numerical_transformer = SimpleImputer(strategy='constant')
+numerical_transformer = Pipeline(steps = [
+    ('imputer', SimpleImputer(strategy='mean')),
+    ('scaler', StandardScaler())
+])
+
 categorical_transformer = Pipeline(steps=[
     ('imputer', SimpleImputer(strategy='most_frequent')),
     ('onehot', OneHotEncoder(handle_unknown='ignore'))
