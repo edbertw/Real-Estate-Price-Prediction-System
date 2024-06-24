@@ -12,6 +12,16 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.cluster import KMeans
 from sklearn.metrics import mean_absolute_error, r2_score
 
+def make_mi_scores(X, y):
+    X = X.copy()
+    for colname in X.select_dtypes(["object", "category"]):
+        X[colname], _ = X[colname].factorize()
+    discrete_features = [pd.api.types.is_integer_dtype(t) for t in X.dtypes]
+    mi_scores = mutual_info_regression(X, y, discrete_features=discrete_features, random_state=0)
+    mi_scores = pd.Series(mi_scores, name="MI Scores", index=X.columns)
+    mi_scores = mi_scores.sort_values(ascending=False)
+    return mi_scores
+    
 #Make Target and Predictors
 X = pd.read_csv('houses.csv', index_col='Id')
 print(X.isnull().sum())
@@ -39,6 +49,12 @@ plt.show()
 #Elbow WCSS Method shows 5 clusters
 kmeans = KMeans(n_clusters = 5,n_init = 10, random_state=0)
 X["Cluster"] = kmeans.fit_predict(X_scaled)
+
+Xtemp = X.drop(na_counts.index, axis = 1)
+mi_scores = make_mi_scores(Xtemp,y)
+print(mi_scores)
+X = X.drop(["MiscVal","Utilities","PoolArea","LandSlope","MoSold"], axis = 1)
+# Drop cols with extremely low MI scores (top 5 lowest)
 
 X_trainN, X_testN, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2,
                                                                 random_state=0)
