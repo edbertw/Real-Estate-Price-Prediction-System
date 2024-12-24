@@ -1,7 +1,7 @@
 # Prediction of Real Estate Prices
 ## Project Overview
 This project aims to predict sale prices of real estate using a dataset of known houses and its prices in the housing market. We implement a Random Forest Regression Algorithm to predict Real Estate prices based on features such as YearBuilt, HouseStyle, Utilities and many more.
-In this project, I have implemented data preprocessing using pipeline which fills in missing data on both categorical and numerical columns using SimpleImputer and encodes categorical data using the OneHotEncoder function from ```scikit-learn```. I also implemented GridSearchCV for hyperparameter tuning to achieve the best estimator of models with varying parameters
+In this project, I have implemented a data preprocessing pipeline which fills in missing data on both categorical and numerical columns using SimpleImputer and encodes categorical data using the OneHotEncoder function from ```scikit-learn```. I also implemented GridSearchCV for hyperparameter tuning to achieve the best estimator of models with varying parameters
 ## Dataset
 The dataset used in this project is ```houses.csv```,which contains 1460 observations and 81 total features that determine house sale prices. During data preprocessing, some of these features that exhibit high cardinality will be removed due to its irrelevance and troublesome-ness when one-hot encoding. Furthermore, the top 5 columns with lowest Mutual Importance scores will also be dropped.
 ## Feature Manipulation
