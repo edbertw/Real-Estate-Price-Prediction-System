@@ -11,7 +11,7 @@ The dataset used in this project is ```houses.csv```,which contains 1460 observa
 Several preprocessing steps were implemented on the dataset to allow for accurate predictions
 1. Removing categorical columns with high cardinality, as implementation alongside OneHotEncoding will result in too much columns
 2. In the data preprocessing pipeline, implement ```SimpleImputer``` and ```OneHotEncoding```
-3. For numerical columns, implement StandardScaler for scaling
+3. For numerical columns, implement StandardScaler for normal scaling
 4. Removing columns with extremely low MI scores (bottom 5)
    
 ## Model Training and Hyperparameter Tuning
